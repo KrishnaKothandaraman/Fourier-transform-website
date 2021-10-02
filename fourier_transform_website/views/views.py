@@ -9,3 +9,10 @@ def userDrawing(request):
 
 def imageDrawing(request):
     return render(request, "imageDrawing.html", {})
+
+def process_image(request):
+    print(request.POST["user_image"])
+
+    print(request)
+    
+    return HttpResponse("ok")

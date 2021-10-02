@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('userDrawing/', userDrawing),
-    path('imageDrawing/', imageDrawing)
+    path('userdrawing/', userDrawing),
+    path('imagedrawing/', imageDrawing),
+    path('process-image-upload', process_image)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

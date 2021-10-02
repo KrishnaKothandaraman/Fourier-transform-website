@@ -1,16 +1,22 @@
 //selecting all required elements
 const dropArea = document.querySelector(".drag-area"),
 dragText = dropArea.querySelector("header"),
-button = dropArea.querySelector("button"),
-input = dropArea.querySelector("input");
+button = document.querySelector("#select-button"),
+input = document.querySelector("#image-drop-box");
+let image_submit_button = document.querySelector(".submit-button");
 let file; //this is a global variable and we'll use it inside multiple functions
 
 button.onclick = ()=>{
   input.click(); //if user click on the button then the input also clicked
 }
 
+
 input.addEventListener("change", function(){
   //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+  if (this.files.length > 1){
+    alert("Select only one file")
+    return
+  }
   file = this.files[0];
   dropArea.classList.add("active");
   showFile(); //calling function
@@ -47,6 +53,7 @@ function showFile(){
       let fileURL = fileReader.result; //passing user file source in fileURL variable
         // UNCOMMENT THIS BELOW LINE. I GOT AN ERROR WHILE UPLOADING THIS POST SO I COMMENTED IT
       let imgTag = `<img src="${fileURL}" alt="image">`; //creating an img tag and passing user selected file source inside src attribute
+      imgTag.class = "image-display";
       dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
     }
     fileReader.readAsDataURL(file);
@@ -56,3 +63,4 @@ function showFile(){
     dragText.textContent = "Drag & Drop to Upload File";
   }
 }
+

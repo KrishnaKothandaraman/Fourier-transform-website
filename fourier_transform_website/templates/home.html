@@ -11,13 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-  <div class="drag-area">
-    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-    <header>Drag & Drop to Upload File</header>
-    <span>OR</span>
-    <button>Browse File</button>
-    <input type="file" hidden>
-  </div>
+  <form class="image-upload-form" method='post' action='/process-image-upload' enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="drag-area">
+      <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <header>Drag & Drop to Upload File</header>
+      <span>OR</span>
+      <button type="button" id="select-button">Browse File</button>
+    </div>
+    <input id="image-drop-box" type="file" name="user_image">
+    <button type='submit' class="submit-button">Submit Image for processing</button>
+
+  </form>
+
 
   <script src="/static/js/script.js"></script>
 
